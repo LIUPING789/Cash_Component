@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id 'kotlin-kapt'
 }
+
 
 def config = rootProject.ext
 
@@ -30,21 +32,14 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8  // 设置 Java 编译器的目标版本
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "1.8"  // 设置 Kotlin 编译器的 JVM 目标版本
     }
 
-    // 如果你使用 Jetpack Compose，请启用以下部分
-    // buildFeatures {
-    //     compose true
-    // }
-    // composeOptions {
-    //     kotlinCompilerExtensionVersion '1.5.1'
-    // }
 
     packaging {
         resources {

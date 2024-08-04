@@ -2,9 +2,7 @@ package com.knight.cash_component;
 
 import android.app.Application;
 
-import com.knight.librouter.Router;
-import com.knight.login.LoginActivity;
-import com.knight.module.main.MainActivity;
+import com.alibaba.android.arouter.launcher.ARouter;
 
 /**
  * description:
@@ -14,12 +12,15 @@ import com.knight.module.main.MainActivity;
  * update: 2024/8/4 on 13:53
  * version: v 1.0
  */
-class CashApplication extends Application {
+public class CashApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Router.getInstance().register("/main/MainActivity", MainActivity.class);
-        Router.getInstance().register("/main/MainActivity", LoginActivity.class);
+//        Router.getInstance().register("/main/MainActivity", MainActivity.class);
+//        Router.getInstance().register("/login/LoginActivity", LoginActivity.class);
+        ARouter.openLog();
+        ARouter.openDebug();
+        ARouter.init(this);
     }
 }
 

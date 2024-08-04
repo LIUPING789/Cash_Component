@@ -36,6 +36,8 @@ dependencies {
     api config.library.appcompat
     api config.library.material
     api config.library.constraintlayout
+    api config.libARouter
+
     api project(':modulesBase:libraryRouter')
 
 }
