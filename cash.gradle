@@ -1,0 +1,26 @@
+ext {
+    isDebug = false  //当它为true时，调式模式，组件可以当独运行。当它为false时，正式编译打包的模式。
+    android = [
+            compileSdk : 34,
+            minSdk     : 29,
+            targetSdk  : 34,
+            versionCode: 1,
+            versionName: "1.0"
+    ]
+
+    applicationId = [
+            "app" : "com.knight.cash_component",
+            "main": "com.knight.module.main",
+            "login": "com.knight.module.login",
+    ]
+
+    library = [
+            "appcompat"       : "androidx.appcompat:appcompat:1.1.0",
+            "material"        : "com.google.android.material:material:1.4.0",
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:1.1.3",
+    ]
+
+    libARouter = "com.alibaba:arouter-api:1.5.1"
+    libARouterCompiler = 'com.alibaba:arouter-compiler:1.5.1'
+    libGson = "com.google.code.gson:gson:2.11.0"
+}

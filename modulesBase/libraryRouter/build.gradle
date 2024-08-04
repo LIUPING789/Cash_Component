@@ -1,0 +1,39 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+
+// 定义 cfg 变量引用 rootProject.ext
+def config = rootProject.ext
+android {
+    namespace 'com.knight.libraryrouter'
+    compileSdk rootProject.ext.android["compileSdk"]
+
+    defaultConfig {
+        minSdk rootProject.ext.android["minSdk"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    api config.library.appcompat
+    api config.library.material
+    api config.library.constraintlayout
+}

@@ -1,0 +1,22 @@
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // 添加 Android Gradle 插件依赖
+        classpath 'com.android.tools.build:gradle:8.0.2' // 确保此版本与 Gradle 版本兼容
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0' // 确保与使用的 Kotlin 版本兼容
+        // 如果需要其他插件，也在此处添加
+    }
+}
+
+// 现在可以定义插件
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.android.library) apply false
+}
+
+apply from: "${rootDir}/cash.gradle"

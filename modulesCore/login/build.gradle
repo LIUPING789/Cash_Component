@@ -1,0 +1,81 @@
+def config = rootProject.ext
+if (config.isDebug) {
+    apply plugin: 'com.android.application'
+    apply plugin: 'org.jetbrains.kotlin.android'
+} else {
+    apply plugin: 'com.android.library'
+    apply plugin: 'org.jetbrains.kotlin.android'
+}
+
+
+android {
+    namespace 'com.knight.module.login'
+    compileSdk config.android["compileSdk"]
+
+    defaultConfig {
+        if (rootProject.ext.isDebug) {
+            applicationId config.applicationId.login
+        }
+        minSdk config.android["minSdk"]
+        targetSdk config.android["targetSdk"]
+        versionCode config.android["versionCode"]
+        versionName config.android["versionName"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    if (config.isDebug) {
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+    }
+
+//    buildFeatures {
+//        compose true
+//    }
+
+//    composeOptions {
+//        kotlinCompilerExtensionVersion '1.5.1'
+//    }
+
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (config.isDebug) {
+                manifest.srcFile "src/main/debug/AndroidManifest.xml"
+            } else {
+                manifest.srcFile "src/main/AndroidManifest.xml"
+            }
+        }
+    }
+}
+
+dependencies {
+    //API 可以向上级传递
+    api project(':modulesBase:libraryBase')
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+    androidTestImplementation platform(libs.androidx.compose.bom)
+    androidTestImplementation libs.androidx.ui.test.junit4
+}
