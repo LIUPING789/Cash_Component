@@ -2,6 +2,8 @@ package com.knight.module.main
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
